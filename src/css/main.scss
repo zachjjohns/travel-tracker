@@ -1,0 +1,18 @@
+@import './_normalize.scss';
+
+$primary-background: #4789B2;
+$white: #FFFFFF;
+
+body {
+  color: $white;
+  font-family: 'Source Sans Pro', sans-serif;
+  background: $primary-background;
+}
+
+.traveler-details {
+  border: 1px solid red;
+}
+
+.trips-container {
+  border: 1px solid greenyellow;
+}
