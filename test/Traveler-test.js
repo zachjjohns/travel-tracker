@@ -1,5 +1,6 @@
 import chai from 'chai';
 const expect = chai.expect;
+import dayjs from 'dayjs';
 import Traveler from '../src/Traveler.js'
 
 let sampleTraveler, sampleTrips, traveler
