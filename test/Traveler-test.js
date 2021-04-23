@@ -107,9 +107,15 @@ describe('Traveler', () => {
     traveler = new Traveler(sampleTraveler);
     traveler.trips = sampleTrips;
   });
+
   it('should be an instance of Traveler', () => {
     expect(traveler).to.be.an.instanceOf(Traveler);
   });
 
-  
+  it('should instantiate with user details', () => {
+    expect(traveler.id).to.equal(49);
+    expect(traveler.name).to.equal("Guthry Tute");
+    expect(traveler.travelerType).to.equal("thrill-seeker");
+    expect(traveler.trips.length).to.equal(10);
+  });
 });
