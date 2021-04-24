@@ -5,7 +5,6 @@ class Traveler {
     this.travelerType = userDetails.travelerType;
     this.trips = [];
   }
-
 }
 
 export default Traveler
