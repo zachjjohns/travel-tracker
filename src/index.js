@@ -46,6 +46,7 @@ let dataSetter = {
       trip.image = matchedDest.image;
       trip.alt = matchedDest.alt;
     })
+    domUpdates.displayAmountSpentThisYear(traveler.trips);
     domUpdates.displayTripCards(traveler.trips);
   } 
 }

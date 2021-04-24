@@ -1,4 +1,4 @@
-let tripsContainer = document.querySelector('.trips-container')
+const tripsContainer = document.querySelector('.trips-container')
 
 let domUpdates = {
   greetUser(traveler) {
@@ -25,6 +25,16 @@ let domUpdates = {
         </div>
       </section>`
     })
+  },
+
+  displayAmountSpentThisYear(trips) {
+    const amountSpentLine = document.querySelector('.amount-spent');
+    const amountSpent = trips.reduce((sum, trip) => {
+      sum += (trip.travelers * trip.estimatedFlightCostPerPerson)
+          + (trip.duration * trip.estimatedLodgingCostPerDay)
+      return sum
+    }, 0);
+    amountSpentLine.innerText = `You've spent $${amountSpent} this year.`
   }
 }
 
