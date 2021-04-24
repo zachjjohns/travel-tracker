@@ -46,7 +46,17 @@ let dataSetter = {
       trip.image = matchedDest.image;
       trip.alt = matchedDest.alt;
     })
-    domUpdates.displayAmountSpentThisYear(traveler.trips);
     domUpdates.displayTripCards(traveler.trips);
-  } 
+    this.calculateYearlySpent(traveler.trips);
+  },
+
+  calculateYearlySpent(trips) {
+    const costWithoutFee = trips.reduce((sum, trip) => {
+      sum += (trip.travelers * trip.estimatedFlightCostPerPerson)
+            + (trip.duration * trip.estimatedLodgingCostPerDay)
+      return sum
+    }, 0);
+    const costPlusFee = costWithoutFee * 1.1;
+    domUpdates.displayAmountSpentThisYear(costPlusFee.toFixed(2));
+  }
 }

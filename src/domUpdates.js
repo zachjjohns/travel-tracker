@@ -27,14 +27,9 @@ let domUpdates = {
     })
   },
 
-  displayAmountSpentThisYear(trips) {
+  displayAmountSpentThisYear(amountTotal) {
     const amountSpentLine = document.querySelector('.amount-spent');
-    const amountSpent = trips.reduce((sum, trip) => {
-      sum += (trip.travelers * trip.estimatedFlightCostPerPerson)
-          + (trip.duration * trip.estimatedLodgingCostPerDay)
-      return sum
-    }, 0);
-    amountSpentLine.innerText = `You've spent $${amountSpent} this year.`
+    amountSpentLine.innerText = `You've spent $${amountTotal} this year.`
   }
 }
 
