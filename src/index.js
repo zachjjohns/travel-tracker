@@ -6,10 +6,11 @@ import {
 } from './API';
 import dayjs from 'dayjs';
 import Traveler from './Traveler.js'
+import domUpdates from './domUpdates';
 
 let traveler, trips, destinations
 
-window.addEventListener('load', getData(14));
+window.addEventListener('load', getData(37));
 
 function getData(id) {
   Promise.all([getTraveler(id), tripsData(), destinationsData()])
@@ -23,6 +24,7 @@ function getData(id) {
 let dataSetter = {
   setTraveler(travelerData) {
     traveler = new Traveler(travelerData);
+    domUpdates.greetUser(traveler);
   },
 
   setTrips(tripsData) {
