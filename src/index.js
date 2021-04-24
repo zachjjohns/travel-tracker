@@ -8,9 +8,9 @@ import dayjs from 'dayjs';
 import Traveler from './Traveler.js'
 import domUpdates from './domUpdates';
 
-let traveler, trips, destinations
+let traveler, destinations
 
-window.addEventListener('load', getData(37));
+window.addEventListener('load', getData(9));
 
 function getData(id) {
   Promise.all([getTraveler(id), tripsData(), destinationsData()])
@@ -28,7 +28,8 @@ let dataSetter = {
   },
 
   setTrips(tripsData) {
-    traveler.trips = tripsData.trips.filter(trip => trip.userID === traveler.id)
+    traveler.trips = tripsData.trips.filter(trip => trip.userID === traveler.id);
+    console.log(traveler.trips);
   },
 
   setDestinations(destData) {
