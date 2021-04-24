@@ -18,6 +18,7 @@ function getData(id) {
       dataSetter.setTraveler(data[0]);
       dataSetter.setTrips(data[1], data[0]);
       dataSetter.setDestinations(data[2]);
+      dataSetter.matchTripsToDestinations();
     })
 }
 
@@ -34,5 +35,17 @@ let dataSetter = {
 
   setDestinations(destData) {
     destinations = destData.destinations;
-  }
+  },
+
+  matchTripsToDestinations() {
+    traveler.trips.forEach(trip => {
+      let matchedDest = destinations.find(dest => dest.id === trip.destinationID);
+      trip.destination = matchedDest.destination;
+      trip.estimatedLodgingCostPerDay = matchedDest.estimatedLodgingCostPerDay;
+      trip.estimatedFlightCostPerPerson = matchedDest.estimatedFlightCostPerPerson;
+      trip.image = matchedDest.image;
+      trip.alt = matchedDest.alt;
+    })
+    domUpdates.displayTripCards(traveler.trips);
+  } 
 }
