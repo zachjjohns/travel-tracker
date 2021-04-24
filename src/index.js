@@ -47,16 +47,11 @@ let dataSetter = {
       trip.alt = matchedDest.alt;
     })
     domUpdates.displayTripCards(traveler.trips);
-    this.calculateYearlySpent(traveler.trips);
+    getAnnualSpent();
   },
+}
 
-  calculateYearlySpent(trips) {
-    const costWithoutFee = trips.reduce((sum, trip) => {
-      sum += (trip.travelers * trip.estimatedFlightCostPerPerson)
-            + (trip.duration * trip.estimatedLodgingCostPerDay)
-      return sum
-    }, 0);
-    const costPlusFee = costWithoutFee * 1.1;
-    domUpdates.displayAmountSpentThisYear(costPlusFee.toFixed(2));
-  }
+function getAnnualSpent() {
+  const cost = traveler.calculateYearlySpent(traveler.trips);
+  domUpdates.displayAmountSpentThisYear(cost.toFixed(2));
 }
