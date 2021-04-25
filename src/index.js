@@ -7,7 +7,7 @@ import {
 import dayjs from 'dayjs';
 import Traveler from './Traveler.js'
 import domUpdates from './domUpdates';
-
+console.log(dayjs());
 let traveler, destinations
 
 window.addEventListener('load', getData(9));
@@ -54,4 +54,25 @@ let dataSetter = {
 function getAnnualSpent() {
   const cost = traveler.calculateYearlySpent(traveler.trips);
   domUpdates.displayAmountSpentThisYear(cost.toFixed(2));
+}
+
+function submitTripRequest() {
+   return fetch("http://localhost:3001/api/v1/trips", {
+      method: 'POST',
+      headers: {
+            'Content-Type': 'application/json'
+        },
+      body: JSON.stringify({
+        id: ,
+        userID: ,
+        destinationID: ,
+        travelers: ,
+        date: ,
+        duration: ,
+        status: "pending",
+        suggestedActivites: []
+      }))
+    .then(response => response.json())
+    .then(data => data)
+    .catch(err => console.log(`POST Error: ${err.message}`))
 }
