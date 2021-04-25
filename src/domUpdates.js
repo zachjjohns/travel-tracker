@@ -1,4 +1,8 @@
-const tripsContainer = document.querySelector('.trips-container')
+const travelerContainer = document.querySelector('#travelerDetails')
+const tripsContainer = document.querySelector('#tripsContainer');
+const requestContainer = document.querySelector('#requestContainer');
+const destinationsDropdown = document.querySelector('#destinationsDropdown');
+const requestButton = document.querySelector('#requestTrip');
 
 let domUpdates = {
   greetUser(traveler) {
@@ -23,7 +27,8 @@ let domUpdates = {
           <h4 class="trip-name">${trip.destination}</h4>
           <p class="trip-date">${trip.date}</p>
           <p class="duration-title">Duration</p>
-          <p class="duration-time">${trip.duration}</p>
+          <p class="duration-time">${trip.duration} days</p>
+          <p class="trip-status">Status: ${trip.status}</p>
         </div>
       </section>`
     })
@@ -32,7 +37,27 @@ let domUpdates = {
   displayAmountSpentThisYear(amountTotal) {
     const amountSpentLine = document.querySelector('.amount-spent');
     amountSpentLine.innerText = `You've spent $${amountTotal} this year.`
+  },
+
+  displayRequestForm() {
+    travelerContainer.classList.toggle("hidden");
+    tripsContainer.classList.toggle("hidden");
+    requestContainer.classList.toggle("hidden");
+    if (requestButton.innerText === "Request a Trip!") {
+      requestButton.innerText = "Return to Trips";
+    } else {
+      requestButton.innerText = "Request a Trip!";
+    }
+  },
+
+  displayDestinationDropdown(destinationsData) {
+    destinationsData.map(dest => {
+      destinationsDropdown.innerHTML += 
+      `<option value="${dest.id}">${dest.destination}</option>`
+    })
   }
+
+
 }
 
 export default domUpdates;

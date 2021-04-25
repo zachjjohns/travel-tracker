@@ -21,7 +21,9 @@ describe('Traveler', () => {
         "date": "2020/08/30",
         "duration": 11,
         "status": "approved",
-        "suggestedActivities": []
+        "suggestedActivities": [],
+        "estimatedLodgingCostPerDay": 175,
+        "estimatedFlightCostPerPerson": 200
       }, {
         "id": 42,
         "userID": 11,
@@ -30,7 +32,9 @@ describe('Traveler', () => {
         "date": "2020/08/08",
         "duration": 14,
         "status": "approved",
-        "suggestedActivities": []
+        "suggestedActivities": [],
+        "estimatedLodgingCostPerDay": 45,
+        "estimatedFlightCostPerPerson": 1200
       }, {
         "id": 43,
         "userID": 50,
@@ -39,7 +43,9 @@ describe('Traveler', () => {
         "date": "2021/01/09",
         "duration": 5,
         "status": "approved",
-        "suggestedActivities": []
+        "suggestedActivities": [],
+        "estimatedLodgingCostPerDay": 400,
+        "estimatedFlightCostPerPerson": 80
       }, {
         "id": 44,
         "userID": 27,
@@ -48,7 +54,9 @@ describe('Traveler', () => {
         "date": "2020/09/12",
         "duration": 4,
         "status": "approved",
-        "suggestedActivities": []
+        "suggestedActivities": [],
+        "estimatedLodgingCostPerDay": 550,
+        "estimatedFlightCostPerPerson": 90,
       }, {
         "id": 45,
         "userID": 45,
@@ -57,7 +65,9 @@ describe('Traveler', () => {
         "date": "2020/09/06",
         "duration": 9,
         "status": "approved",
-        "suggestedActivities": []
+        "suggestedActivities": [],
+        "estimatedLodgingCostPerDay": 150,
+        "estimatedFlightCostPerPerson": 650,
       }, {
         "id": 46,
         "userID": 44,
@@ -66,7 +76,9 @@ describe('Traveler', () => {
         "date": "2020/08/24",
         "duration": 11,
         "status": "approved",
-        "suggestedActivities": []
+        "suggestedActivities": [],
+        "estimatedLodgingCostPerDay": 1000,
+        "estimatedFlightCostPerPerson": 110,
       }, {
         "id": 47,
         "userID": 28,
@@ -75,7 +87,9 @@ describe('Traveler', () => {
         "date": "2019/12/10",
         "duration": 14,
         "status": "approved",
-        "suggestedActivities": []
+        "suggestedActivities": [],
+        "estimatedLodgingCostPerDay": 45,
+        "estimatedFlightCostPerPerson": 1200,
       }, {
         "id": 48,
         "userID": 44,
@@ -84,7 +98,9 @@ describe('Traveler', () => {
         "date": "2021/02/10",
         "duration": 8,
         "status": "approved",
-        "suggestedActivities": []
+        "suggestedActivities": [],
+        "estimatedLodgingCostPerDay": 70,
+        "estimatedFlightCostPerPerson": 830,
       }, {
         "id": 49,
         "userID": 45,
@@ -93,7 +109,9 @@ describe('Traveler', () => {
         "date": "2020/05/14",
         "duration": 16,
         "status": "approved",
-        "suggestedActivities": []
+        "suggestedActivities": [],
+        "estimatedLodgingCostPerDay": 200,
+        "estimatedFlightCostPerPerson": 100,
       }, {
         "id": 50,
         "userID": 3,
@@ -102,7 +120,9 @@ describe('Traveler', () => {
         "date": "2020/07/02",
         "duration": 17,
         "status": "approved",
-        "suggestedActivities": []
+        "suggestedActivities": [],
+        "estimatedLodgingCostPerDay": 35,
+        "estimatedFlightCostPerPerson": 988,
       }
     ];
     traveler = new Traveler(sampleTraveler);
@@ -119,4 +139,10 @@ describe('Traveler', () => {
     expect(traveler.travelerType).to.equal("thrill-seeker");
     expect(traveler.trips.length).to.equal(10);
   });
+
+  it('should be able to calculate amount spent in a year', () => {
+    expect(traveler.calculateYearlySpent()).to.equal(48642.00000000001);
+  });
+
+  
 });

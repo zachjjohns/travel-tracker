@@ -1,0 +1,34 @@
+.request-trip {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: 2px solid $white;
+  border-radius: 6px;
+  cursor: pointer;
+  color: $white;
+  padding: 16px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s;
+}
+
+.request-trip:hover {
+  background-color: #47B3A6;
+  color: white;
+}
+
+.request-container {
+  display: flex;
+  justify-content: center;
+  border: 1px solid purple;
+}
+
+.request-form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 20rem;
+}
