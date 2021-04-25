@@ -4,17 +4,21 @@ import Traveler from './Traveler.js'
 import domUpdates from './domUpdates';
 
 const requestButton = document.querySelector('#requestTrip');
-const tripsContainer = document.querySelector('#tripsContainer');
-const requestContainer = document.querySelector('#requestContainer');
 const calculateCostButton = document.querySelector('#calculateCost');
 const submitRequestButton = document.querySelector('#submitRequest');
-
-let traveler, destinations, requestValues
+const departDate = document.querySelector("#departDate");
+const tripDuration = document.querySelector("#tripDuration");
+const numTravelers = document.querySelector("#numTravelers");
 
 window.addEventListener('load', getData(9));
-requestButton.addEventListener('click', displayRequestForm);
+requestButton.addEventListener('click', displayRequest);
+departDate.addEventListener('change', buttonEnabler);
+tripDuration.addEventListener('change', buttonEnabler);
+numTravelers.addEventListener('change', buttonEnabler);
 calculateCostButton.addEventListener('click', calculateTripCost);
 // submitRequestButton.addEventListener('click', submitTripRequest);
+
+let traveler, destinations, requestValues;
 
 function getData(id) {
   Promise.all([getTraveler(id), tripsData(), destinationsData()])
@@ -61,19 +65,23 @@ function getAnnualSpent() {
   domUpdates.displayAmountSpentThisYear(cost.toFixed(2));
 }
 
-function displayRequestForm() {
-  tripsContainer.classList.toggle("hidden");
-  requestContainer.classList.toggle("hidden");
-  if (requestButton.innerText === "Request a Trip!") {
-    requestButton.innerText = "Return to Trips";
-  } else {
-    requestButton.innerText = "Request a Trip!";
+function displayRequest() {
+  domUpdates.displayRequestForm();
+}
+
+function buttonEnabler() {
+  if (departDate.value && tripDuration.value && numTravelers.value) {
+    calculateCostButton.disabled = false;
+    submitRequestButton.disabled = false;
   }
 }
 
 function calculateTripCost() {
   event.preventDefault()
+  let tripCost = 
 }
+
+
 
 // function submitTripRequest() {
 //    return fetch("http://localhost:3001/api/v1/trips", {

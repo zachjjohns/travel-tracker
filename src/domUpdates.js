@@ -1,5 +1,8 @@
-const tripsContainer = document.querySelector('.trips-container');
-const destinationsDropdown = document.querySelector('#destinations');
+const travelerContainer = document.querySelector('#travelerDetails')
+const tripsContainer = document.querySelector('#tripsContainer');
+const requestContainer = document.querySelector('#requestContainer');
+const destinationsDropdown = document.querySelector('#destinationsDropdown');
+const requestButton = document.querySelector('#requestTrip');
 
 let domUpdates = {
   greetUser(traveler) {
@@ -35,12 +38,25 @@ let domUpdates = {
     amountSpentLine.innerText = `You've spent $${amountTotal} this year.`
   },
 
+  displayRequestForm() {
+    travelerContainer.classList.toggle("hidden");
+    tripsContainer.classList.toggle("hidden");
+    requestContainer.classList.toggle("hidden");
+    if (requestButton.innerText === "Request a Trip!") {
+      requestButton.innerText = "Return to Trips";
+    } else {
+      requestButton.innerText = "Request a Trip!";
+    }
+  },
+
   displayDestinationDropdown(destinationsData) {
     destinationsData.map(dest => {
       destinationsDropdown.innerHTML += 
       `<option value="${dest.id}">${dest.destination}</option>`
     })
   }
+
+
 }
 
 export default domUpdates;
