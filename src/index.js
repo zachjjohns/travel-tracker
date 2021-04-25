@@ -1,7 +1,8 @@
 import './css/main.scss';
 import {getTraveler, tripsData, destinationsData} from './API';
-import Traveler from './Traveler.js'
+import Traveler from './Traveler.js';
 import domUpdates from './domUpdates';
+const dayjs = require('dayjs');
 
 const destinationsDropdown = document.querySelector("#destinationsDropdown");
 const requestButton = document.querySelector('#requestTrip');
@@ -41,6 +42,7 @@ let dataSetter = {
   setTrips(tripsData) {
     allTrips = tripsData.trips;
     traveler.trips = tripsData.trips.filter(trip => trip.userID === traveler.id);
+    traveler.sortMyTrips();
   },
 
   setDestinations(destData) {
