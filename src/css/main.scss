@@ -88,17 +88,6 @@ body {
   margin-top: 0;
 }
 
-.sugg-acts-title {
-  font-size: 12px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.sugg-acts-list {
-  margin-top: 0;
-  font-weight: 400;
-}
-
 .duration-title {
   font-size: 13px;
   font-weight: 600;
@@ -108,6 +97,10 @@ body {
 .duration-time {
   margin-top: 0;
   line-height: 36px;
+}
+
+.trip-status {
+  text-transform: capitalize;
 }
 
 .hidden {

@@ -40,6 +40,7 @@ let dataSetter = {
 
   setTrips(tripsData) {
     allTrips = tripsData.trips;
+    console.log(allTrips);
     traveler.trips = tripsData.trips.filter(trip => trip.userID === traveler.id);
   },
 

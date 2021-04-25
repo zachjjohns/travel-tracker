@@ -27,7 +27,8 @@ let domUpdates = {
           <h4 class="trip-name">${trip.destination}</h4>
           <p class="trip-date">${trip.date}</p>
           <p class="duration-title">Duration</p>
-          <p class="duration-time">${trip.duration}</p>
+          <p class="duration-time">${trip.duration} days</p>
+          <p class="trip-status">Status: ${trip.status}</p>
         </div>
       </section>`
     })
