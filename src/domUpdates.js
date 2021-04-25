@@ -1,4 +1,5 @@
-const tripsContainer = document.querySelector('.trips-container')
+const tripsContainer = document.querySelector('.trips-container');
+const destinationsDropdown = document.querySelector('#destinations');
 
 let domUpdates = {
   greetUser(traveler) {
@@ -32,6 +33,13 @@ let domUpdates = {
   displayAmountSpentThisYear(amountTotal) {
     const amountSpentLine = document.querySelector('.amount-spent');
     amountSpentLine.innerText = `You've spent $${amountTotal} this year.`
+  },
+
+  displayDestinationDropdown(destinationsData) {
+    destinationsData.map(dest => {
+      destinationsDropdown.innerHTML += 
+      `<option value="${dest.id}">${dest.destination}</option>`
+    })
   }
 }
 

@@ -19,3 +19,16 @@
   background-color: #47B3A6;
   color: white;
 }
+
+.request-container {
+  display: flex;
+  justify-content: center;
+  border: 1px solid purple;
+}
+
+.request-form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 20rem;
+}

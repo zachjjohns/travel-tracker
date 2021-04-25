@@ -1,17 +1,20 @@
 import './css/main.scss';
 import {getTraveler, tripsData, destinationsData} from './API';
-import dayjs from 'dayjs';
 import Traveler from './Traveler.js'
 import domUpdates from './domUpdates';
 
-const requestButton = document.querySelector('.request-trip');
-const tripsContainer = document.querySelector('.trips-container');
-const requestForm = document.querySelector('.request-form');
+const requestButton = document.querySelector('#requestTrip');
+const tripsContainer = document.querySelector('#tripsContainer');
+const requestContainer = document.querySelector('#requestContainer');
+const calculateCostButton = document.querySelector('#calculateCost');
+const submitRequestButton = document.querySelector('#submitRequest');
 
-let traveler, destinations
+let traveler, destinations, requestValues
 
 window.addEventListener('load', getData(9));
 requestButton.addEventListener('click', displayRequestForm);
+calculateCostButton.addEventListener('click', calculateTripCost);
+// submitRequestButton.addEventListener('click', submitTripRequest);
 
 function getData(id) {
   Promise.all([getTraveler(id), tripsData(), destinationsData()])
@@ -36,6 +39,7 @@ let dataSetter = {
 
   setDestinations(destData) {
     destinations = destData.destinations;
+    domUpdates.displayDestinationDropdown(destinations);
   },
 
   matchTripsToDestinations() {
@@ -59,12 +63,16 @@ function getAnnualSpent() {
 
 function displayRequestForm() {
   tripsContainer.classList.toggle("hidden");
-  requestForm.classList.toggle("hidden");
+  requestContainer.classList.toggle("hidden");
   if (requestButton.innerText === "Request a Trip!") {
     requestButton.innerText = "Return to Trips";
   } else {
     requestButton.innerText = "Request a Trip!";
   }
+}
+
+function calculateTripCost() {
+  event.preventDefault()
 }
 
 // function submitTripRequest() {
