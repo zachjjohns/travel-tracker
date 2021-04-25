@@ -20,7 +20,7 @@ numTravelers.addEventListener('change', buttonEnabler);
 calculateCostButton.addEventListener('click', calculateTripCost);
 submitRequestButton.addEventListener('click', submitTripRequest);
 
-let traveler, destinations, allTrips, requestBody;
+let traveler, destinations, allTrips;
 
 function getData(id) {
   Promise.all([getTraveler(id), tripsData(), destinationsData()])
@@ -69,6 +69,9 @@ function getAnnualSpent() {
 }
 
 function displayRequest() {
+  if (requestButton.innerText === "Return to Trips") {
+    getData(traveler.id);
+  }
   domUpdates.displayRequestForm();
 }
 
@@ -90,7 +93,6 @@ function calculateTripCost() {
 function submitTripRequest() {
   event.preventDefault();
   postTripRequest();
-  alert("Trip request submitted! An agent will be in contact with you.")
 }
 
 function postTripRequest() {
@@ -112,7 +114,8 @@ function postTripRequest() {
   })
     .then(response => response.json())
     .then(response => console.log(response))
-    .then(data => data)
+    .then(data => traveler.trips.push(data))
+    .then(alert("Trip request submitted! An agent will be in contact with you."))
     .catch(err => console.log(`POST Error: ${err.message}`))
 }
 
