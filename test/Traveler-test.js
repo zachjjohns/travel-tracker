@@ -141,8 +141,12 @@ describe('Traveler', () => {
   });
 
   it('should be able to calculate amount spent in a year', () => {
-    expect(traveler.calculateYearlySpent()).to.equal(48642.00000000001);
+    expect(traveler.calculateYearlySpent()).to.equal(43989);
   });
 
-  
+  it('should be able to sort trips by date', () => {
+    traveler.sortMyTrips();
+    expect(traveler.trips[0].date).to.equal("2021/02/10");
+    expect(traveler.trips[9].date).to.equal("2019/12/10");
+  })
 });
