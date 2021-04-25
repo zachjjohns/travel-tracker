@@ -40,7 +40,6 @@ let dataSetter = {
 
   setTrips(tripsData) {
     allTrips = tripsData.trips;
-    console.log(allTrips);
     traveler.trips = tripsData.trips.filter(trip => trip.userID === traveler.id);
   },
 
@@ -113,7 +112,6 @@ function postTripRequest() {
     }
   })
     .then(response => response.json())
-    .then(response => console.log(response))
     .then(data => traveler.trips.push(data))
     .then(alert("Trip request submitted! An agent will be in contact with you."))
     .catch(err => console.log(`POST Error: ${err.message}`))
