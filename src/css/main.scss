@@ -1,13 +1,13 @@
 @import './_normalize.scss';
-
-$primary-background: #4789B2;
-$white: #FFFFFF;
+@import './_variables.scss';
+@import './_requestTrip.scss';
 
 body {
   color: $white;
   font-family: 'Source Sans Pro', sans-serif;
   background: $primary-background;
 }
+
 
 .traveler-details {
   border: 1px solid red;
@@ -108,4 +108,8 @@ body {
 .duration-time {
   margin-top: 0;
   line-height: 36px;
+}
+
+.hidden {
+  display: none !important;
 }
