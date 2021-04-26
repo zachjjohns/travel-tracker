@@ -2,7 +2,6 @@ import './css/main.scss';
 import {getTraveler, travelersData, tripsData, destinationsData} from './API';
 import Traveler from './Traveler.js';
 import domUpdates from './domUpdates';
-const dayjs = require('dayjs');
 
 const destinationsDropdown = document.querySelector("#destinationsDropdown");
 const requestButton = document.querySelector('#requestTrip');
@@ -19,7 +18,7 @@ const loginPage = document.querySelector("#loginPage");
 const travelerDetails = document.querySelector("#travelerDetails");
 const tripsContainer = document.querySelector("#tripsContainer");
 
-window.addEventListener('load', getData(9));
+window.addEventListener('load', getData(1));
 requestButton.addEventListener('click', displayRequest);
 departDate.addEventListener('change', buttonEnabler);
 tripDuration.addEventListener('change', buttonEnabler);
@@ -139,7 +138,6 @@ function formatDate(dateValue) {
 
 function checkLogin() {
   event.preventDefault();
-  console.log(loginPassword.value);
   if (checkUsername() && loginPassword.value === "travel2020") {
     getData(traveler.id);
     loginPage.classList.add("hidden");
