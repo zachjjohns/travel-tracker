@@ -10,8 +10,8 @@
     <h1 class="app-name">TravelTrack</h1>
     <button id="requestTrip" class="request-trip">Request a Trip!</button>
     <section id="travelerDetails" class="traveler-details">
-      <h3 class="greeting"></h3>
-      <h4 class="amount-spent"></h4>
+      <h2 id="greeting" class="greeting"></h2>
+      <h3 class="amount-spent"></h3>
     </section>
     <section id="tripsContainer" class="trips-container">
 
@@ -29,13 +29,8 @@
         <input type="number" id="numTravelers" name="num-travelers" min="1" max="10">
         <button id="calculateCost" class="calculate-cost" disabled>Calculate Cost</button>
         <button id="submitRequest" class="submit-request" disabled>Submit Request</button>
-        <h3 id="tripCost" class="trip-cost"></h3>
+        <h1 id="tripCost" class="trip-cost"></h1>
       </form>
     </section>
   </body>
 </html>
-<!-- I should be able to make a trip request:
-I will select a date, duration, number of travelers and choose from a list of destinations
-After making these selections, I should see an estimated cost (with a 10% travel agent fee) for the trip.
-Once I submit the trip request, it will show on my dashboard as “pending” so that the travel agency can approve or deny it.
- -->
