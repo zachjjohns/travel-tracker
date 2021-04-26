@@ -12,6 +12,7 @@ const departDate = document.querySelector("#departDate");
 const tripDuration = document.querySelector("#tripDuration");
 const numTravelers = document.querySelector("#numTravelers");
 const tripCostLine = document.querySelector("#tripCost");
+const 
 
 window.addEventListener('load', getData(9));
 requestButton.addEventListener('click', displayRequest);
@@ -124,3 +125,7 @@ function formatDate(dateValue) {
   let joinedDate = splitDate.join('/');
   return joinedDate
 }
+
+// function loginCheck() {
+
+// }
