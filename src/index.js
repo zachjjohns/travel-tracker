@@ -49,7 +49,6 @@ let dataSetter = {
 
   setAllTravelers(travelersData) {
     allTravelers = travelersData.travelers;
-    console.log(allTravelers);
   },
 
   setTrips(tripsData) {
@@ -142,6 +141,7 @@ function checkLogin() {
   event.preventDefault();
   console.log(loginPassword.value);
   if (checkUsername() && loginPassword.value === "travel2020") {
+    getData(traveler.id);
     loginPage.classList.add("hidden");
     requestButton.classList.remove("hidden");
     travelerDetails.classList.remove("hidden");
@@ -153,9 +153,8 @@ function checkLogin() {
 
 function checkUsername() {
   if (loginUser.value.split("traveler")[1]) {
-    console.log(allTravelers);
     const id = parseInt(loginUser.value.split("traveler")[1]);
-    console.log(id);
-    return allTravelers.find(traveler => traveler.id === id);
+    traveler.id = id;
+    return allTravelers.find(trav => trav.id === id);
   }
 }
