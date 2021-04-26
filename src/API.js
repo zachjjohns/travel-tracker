@@ -12,6 +12,12 @@ export function getTraveler(id) {
     .catch(err => console.log(`Traveler API Error: ${err.message}`))
 }
 
+export function travelersData() {
+  return fetch("http://localhost:3001/api/v1/travelers")
+    .then(response => checkForError(response))
+    .catch(err => console.log(`Travelers API Error: ${err.message}`))
+}
+
 export function tripsData() {
   return fetch("http://localhost:3001/api/v1/trips")
     .then(response => checkForError(response))

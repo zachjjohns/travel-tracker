@@ -1,8 +1,7 @@
 import './css/main.scss';
-import {getTraveler, tripsData, destinationsData} from './API';
+import {getTraveler, travelersData, tripsData, destinationsData} from './API';
 import Traveler from './Traveler.js';
 import domUpdates from './domUpdates';
-const dayjs = require('dayjs');
 
 const destinationsDropdown = document.querySelector("#destinationsDropdown");
 const requestButton = document.querySelector('#requestTrip');
@@ -12,23 +11,31 @@ const departDate = document.querySelector("#departDate");
 const tripDuration = document.querySelector("#tripDuration");
 const numTravelers = document.querySelector("#numTravelers");
 const tripCostLine = document.querySelector("#tripCost");
+const loginUser = document.querySelector("#loginUser");
+const loginPassword = document.querySelector("#loginPassword");
+const loginSubmitButton = document.querySelector("#loginSubmit");
+const loginPage = document.querySelector("#loginPage");
+const travelerDetails = document.querySelector("#travelerDetails");
+const tripsContainer = document.querySelector("#tripsContainer");
 
-window.addEventListener('load', getData(9));
+window.addEventListener('load', getData(1));
 requestButton.addEventListener('click', displayRequest);
 departDate.addEventListener('change', buttonEnabler);
 tripDuration.addEventListener('change', buttonEnabler);
 numTravelers.addEventListener('change', buttonEnabler);
 calculateCostButton.addEventListener('click', calculateTripCost);
 submitRequestButton.addEventListener('click', submitTripRequest);
+loginSubmitButton.addEventListener('click', checkLogin);
 
-let traveler, destinations, allTrips;
+let traveler, allTravelers, destinations, allTrips;
 
 function getData(id) {
-  Promise.all([getTraveler(id), tripsData(), destinationsData()])
+  Promise.all([getTraveler(id), travelersData(), tripsData(), destinationsData()])
     .then(data => {
       dataSetter.setTraveler(data[0]);
-      dataSetter.setTrips(data[1], data[0]);
-      dataSetter.setDestinations(data[2]);
+      dataSetter.setAllTravelers(data[1]);
+      dataSetter.setTrips(data[2], data[0]);
+      dataSetter.setDestinations(data[3]);
       dataSetter.matchTripsToDestinations();
     })
 }
@@ -37,6 +44,10 @@ let dataSetter = {
   setTraveler(travelerData) {
     traveler = new Traveler(travelerData);
     domUpdates.greetUser(traveler);
+  },
+
+  setAllTravelers(travelersData) {
+    allTravelers = travelersData.travelers;
   },
 
   setTrips(tripsData) {
@@ -123,4 +134,25 @@ function formatDate(dateValue) {
   let splitDate = dateValue.split('-');
   let joinedDate = splitDate.join('/');
   return joinedDate
+}
+
+function checkLogin() {
+  event.preventDefault();
+  if (checkUsername() && loginPassword.value === "travel2020") {
+    getData(traveler.id);
+    loginPage.classList.add("hidden");
+    requestButton.classList.remove("hidden");
+    travelerDetails.classList.remove("hidden");
+    tripsContainer.classList.remove("hidden");
+  } else {
+    alert("Invalid username and/or password. Please try again.")
+  }
+}
+
+function checkUsername() {
+  if (loginUser.value.split("traveler")[1]) {
+    const id = parseInt(loginUser.value.split("traveler")[1]);
+    traveler.id = id;
+    return allTravelers.find(trav => trav.id === id);
+  }
 }

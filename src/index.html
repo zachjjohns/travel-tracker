@@ -8,19 +8,26 @@
   </head>
   <body>
     <h1 class="app-name">TravelTrack</h1>
-    <button id="requestTrip" class="request-trip">Request a Trip!</button>
-    <section id="travelerDetails" class="traveler-details">
+    <button id="requestTrip" class="request-trip hidden">Request a Trip!</button>
+    <section id="loginPage" class="login-page">
+      <form class="login-form">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" id="loginUser" required>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" id="loginPassword" required>
+        <button type="submit" id="loginSubmit">Login</button>
+      </form>
+    </section>
+    <section id="travelerDetails" class="traveler-details hidden">
       <h2 id="greeting" class="greeting"></h2>
       <h3 class="amount-spent"></h3>
     </section>
-    <section id="tripsContainer" class="trips-container">
-
+    <section id="tripsContainer" class="trips-container hidden">
     </section>
     <section id="requestContainer" class="request-container hidden">
       <form class="request-form">
         <label for="destinations">Choose a Destination</label>
-        <select name="destinations" id="destinationsDropdown">
-        </select>
+        <select name="destinations" id="destinationsDropdown"></select>
         <label for="departDate">Departure Date:</label>
         <input type="date" id="departDate" name="depart-date">
         <label for="tripDuration">Trip Duration (in days)</label>
