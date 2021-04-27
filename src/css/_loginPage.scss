@@ -6,7 +6,24 @@
 .login-form {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   height: 20rem;
   width: 20rem;
+}
+
+.login-label {
+  padding-left: 1rem;
+}
+
+.login-input {
+  border-radius: 1rem;
+  padding: .8rem;
+  margin-bottom: 2rem;
+}
+
+.login-button {
+  @include cool-button();
+}
+
+.login-button:hover {
+  background-color: $button-hover-color;
 }
