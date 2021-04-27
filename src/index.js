@@ -54,6 +54,7 @@ let dataSetter = {
 
   setTrips(tripsData) {
     allTrips = new TripsRepo(tripsData.trips);
+    allTrips.completeOldTrips();
     traveler.trips = tripsData.trips.filter(trip => trip.userID === traveler.id);
     traveler.sortMyTrips();
   },
@@ -98,7 +99,7 @@ function buttonEnabler() {
 
 function calculateTripCost() {
   event.preventDefault();
-  let matchedDest = destinations.find(dest => dest.id === parseInt(destinationsDropdown.value));
+  let matchedDest = destinations.allDestinations.find(dest => dest.id === parseInt(destinationsDropdown.value));
   let tripCost = (numTravelers.value * matchedDest.estimatedFlightCostPerPerson
                  + tripDuration.value * matchedDest.estimatedLodgingCostPerDay) * 1.1;
   tripCostLine.innerText = `This trip will cost a total of $${tripCost.toFixed(2)}.`        
@@ -113,7 +114,7 @@ function postTripRequest() {
   fetch("http://localhost:3001/api/v1/trips", {
     method: "POST",
     body: JSON.stringify({
-      "id": parseInt(allTrips.length + 1),
+      "id": Date.now(),
       "userID": parseInt(traveler.id),
       "destinationID": parseInt(destinationsDropdown.value),
       "travelers": parseInt(numTravelers.value),
@@ -127,6 +128,7 @@ function postTripRequest() {
     }
   })
     .then(response => response.json())
+    .then(response => console.log(response))
     .then(data => traveler.trips.push(data))
     .then(alert("Trip request submitted! An agent will be in contact with you."))
     .catch(err => console.log(`POST Error: ${err.message}`))
