@@ -13,7 +13,7 @@
 
 ## Deploy Instructions
 * Clone this repo down
-* Clone down [this API repo](https://github.com/turingschool-examples/whats-cookin-api) in a separate directory
+* Clone down [this API repo](https://github.com/turingschool-examples/travel-tracker-api) in a separate directory
 * Run `npm install` on both repo directories
 * Run `npm start` on both repos, you'll need two Terminal tabs/windows to do so
 * Type `localhost:8080` into your browser's URL once both local servers are running!
