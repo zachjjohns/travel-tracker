@@ -1,6 +1,6 @@
 import chai from "chai";
-import TripsRepo from "../src/TripsRepo.js";
 const expect = chai.expect;
+import TripsRepo from "../src/TripsRepo.js";
 import testTrips from "./sampledata/test-trips.js";
 
 let tripsRepo;
