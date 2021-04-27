@@ -21,8 +21,8 @@ describe("Trips Repo", () => {
   it("should instantiate with an array of all trip objects", () => {
     expect(tripsRepo.allTrips).to.be.an("array");
     expect(tripsRepo.allTrips).to.have.lengthOf(10);
-    expect(tripsRepo.allTrips[0].id).to.equal(48);
-    expect(tripsRepo.allTrips[9].id).to.equal(47);
+    expect(tripsRepo.allTrips[0].id).to.equal(41);
+    expect(tripsRepo.allTrips[9].id).to.equal(50);
   });
 
   it("should be able to change status of old trips to completed", () => {

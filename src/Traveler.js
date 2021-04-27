@@ -21,9 +21,9 @@ class Traveler {
     return costPlusFee;
   }
 
-  // getMyTrips() {
-
-  // }
+  getMyTrips(tripsData) {
+    this.trips = tripsData.filter(trip => trip.userID === this.id);
+  }
 
   sortMyTrips() {
     this.trips = this.trips.sort((a, b) => dayjs(b.date) - dayjs(a.date));

@@ -55,7 +55,7 @@ let dataSetter = {
   setTrips(tripsData) {
     allTrips = new TripsRepo(tripsData.trips);
     allTrips.completeOldTrips();
-    traveler.trips = tripsData.trips.filter(trip => trip.userID === traveler.id);
+    traveler.getMyTrips(tripsData.trips);
     traveler.sortMyTrips();
   },
 

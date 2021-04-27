@@ -9,7 +9,7 @@ let traveler, sampleTrips;
 describe("Traveler", () => {
   beforeEach(() => {
     traveler = new Traveler(testTraveler);
-    traveler.trips = testTrips;
+    sampleTrips = testTrips;
   });
 
   it("should be a function", () => {
@@ -31,18 +31,26 @@ describe("Traveler", () => {
   it("should instantiate with their travel type", () => {
     expect(traveler.travelerType).to.equal("thrill-seeker");
   });
+  
+  it("should be able to get trips that match ID", () => {
+    traveler.getMyTrips(sampleTrips);
+    expect(traveler.trips[0]).to.deep.equal(testTrips[3]);
+  });
 
   it("should instantiate with the appropriate trips", () => {
-    expect(traveler.trips.length).to.equal(10);
+    traveler.getMyTrips(sampleTrips);
+    expect(traveler.trips.length).to.equal(4);
   });
 
   it("should be able to calculate amount spent in a year", () => {
-    expect(traveler.calculateYearlySpent()).to.equal(43989);
+    traveler.getMyTrips(sampleTrips);
+    expect(traveler.calculateYearlySpent()).to.equal(26928.000000000004);
   });
 
   it("should be able to sort trips by date", () => {
+    traveler.getMyTrips(sampleTrips);
     traveler.sortMyTrips();
     expect(traveler.trips[0].date).to.equal("2021/02/10");
-    expect(traveler.trips[9].date).to.equal("2019/12/10");
+    expect(traveler.trips[3].date).to.equal("2020/08/24");
   });
 });

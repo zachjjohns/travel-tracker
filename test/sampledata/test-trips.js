@@ -34,7 +34,7 @@ const testTrips = [
     "estimatedFlightCostPerPerson": 80
   }, {
     "id": 44,
-    "userID": 27,
+    "userID": 49,
     "destinationID": 43,
     "travelers": 3,
     "date": "2020/09/12",
@@ -45,7 +45,7 @@ const testTrips = [
     "estimatedFlightCostPerPerson": 90,
   }, {
     "id": 45,
-    "userID": 45,
+    "userID": 49,
     "destinationID": 5,
     "travelers": 6,
     "date": "2020/09/06",
@@ -56,7 +56,7 @@ const testTrips = [
     "estimatedFlightCostPerPerson": 650,
   }, {
     "id": 46,
-    "userID": 44,
+    "userID": 49,
     "destinationID": 33,
     "travelers": 2,
     "date": "2020/08/24",
@@ -78,7 +78,7 @@ const testTrips = [
     "estimatedFlightCostPerPerson": 1200,
   }, {
     "id": 48,
-    "userID": 44,
+    "userID": 49,
     "destinationID": 14,
     "travelers": 6,
     "date": "2021/02/10",
