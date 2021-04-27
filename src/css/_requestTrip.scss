@@ -2,34 +2,57 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: transparent;
-  border: 2px solid $white;
-  border-radius: 6px;
-  cursor: pointer;
-  color: $white;
-  padding: 16px 32px;
-  text-align: center;
-  display: inline-block;
-  margin: 4px 2px;
-  box-shadow: $drop-shadow;
-  -webkit-transition-duration: 0.4s;
+  @include cool-button();
 }
 
 .request-trip:hover {
-  background-color: #47B3A6;
-  color: white;
+  background-color: $button-hover-color;
 }
 
 .request-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .request-form {
   display: flex;
   flex-direction: column;
-  text-align: center;
+  justify-content: space-evenly;
+  height: 30rem;
   width: 20rem;
+}
+
+.request-input {
+  border-radius: .5rem;
+  padding: .5rem;
+}
+
+.request-date {
+  width: 94%;
+  border-radius: .5rem;
+  padding: .5rem;
+}
+
+.request-button {
+  @include cool-button();
+  width: 100%
+}
+
+.request-button:hover {
+  background-color: $button-hover-color;
+}
+
+.request-button:disabled {
+  border: 1px solid grey;
+  box-shadow: none;
+  color: darkgray;
+  background-color: grey;
+}
+
+.trip-cost {
+  text-align: center;
 }
 
 @media screen and (max-width: 550px) {
