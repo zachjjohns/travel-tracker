@@ -10,6 +10,10 @@ describe("Trips Repo", () => {
     tripsRepo = new TripsRepo(testTrips);
   });
 
+  it("should be a function", () => {
+    expect(TripsRepo).to.be.a("function");
+  });
+
   it("should be an instance of TripsRepo", () => {
     expect(tripsRepo).to.be.an.instanceOf(TripsRepo);
   });
