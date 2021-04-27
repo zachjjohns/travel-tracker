@@ -5,28 +5,27 @@ import TripsRepo from "./TripsRepo";
 import DestinationsRepo from "./DestinationsRepo";
 import domUpdates from "./domUpdates";
 
-const destinationsDropdown = document.querySelector("#destinationsDropdown");
-const requestButton = document.querySelector("#requestTrip");
 const calculateCostButton = document.querySelector("#calculateCost");
-const submitRequestButton = document.querySelector("#submitRequest");
 const departDate = document.querySelector("#departDate");
-const tripDuration = document.querySelector("#tripDuration");
-const numTravelers = document.querySelector("#numTravelers");
-const tripCostLine = document.querySelector("#tripCost");
-const loginUser = document.querySelector("#loginUser");
+const destinationsDropdown = document.querySelector("#destinationsDropdown");
 const loginPassword = document.querySelector("#loginPassword");
 const loginSubmitButton = document.querySelector("#loginSubmit");
-
-
+const loginUser = document.querySelector("#loginUser");
+const numTravelers = document.querySelector("#numTravelers");
+const requestButton = document.querySelector("#requestTrip");
+const submitRequestButton = document.querySelector("#submitRequest");
+const tripCostLine = document.querySelector("#tripCost");
+const tripDuration = document.querySelector("#tripDuration");
 
 window.addEventListener("load", getData(1));
-requestButton.addEventListener("click", displayRequest);
-departDate.addEventListener("change", buttonEnabler);
-tripDuration.addEventListener("change", buttonEnabler);
-numTravelers.addEventListener("change", buttonEnabler);
+
 calculateCostButton.addEventListener("click", calculateTripCost);
-submitRequestButton.addEventListener("click", submitTripRequest);
+departDate.addEventListener("change", buttonEnabler);
 loginSubmitButton.addEventListener("click", checkLogin);
+numTravelers.addEventListener("change", buttonEnabler);
+requestButton.addEventListener("click", displayRequest);
+submitRequestButton.addEventListener("click", submitTripRequest);
+tripDuration.addEventListener("change", buttonEnabler);
 
 let traveler, allTravelers, destinations, allTrips;
 
@@ -135,10 +134,6 @@ function checkLogin() {
   if (checkUsername() && loginPassword.value === "travel2020") {
     getData(traveler.id);
     domUpdates.displayMainPage(); 
-    // loginPage.classList.add("hidden");
-    // requestButton.classList.remove("hidden");
-    // travelerDetails.classList.remove("hidden");
-    // tripsContainer.classList.remove("hidden");
   } else {
     alert("Invalid username and/or password. Please try again.")
   }

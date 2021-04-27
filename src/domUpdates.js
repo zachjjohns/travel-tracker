@@ -1,10 +1,3 @@
-const travelerContainer = document.querySelector("#travelerDetails")
-const tripsContainer = document.querySelector("#tripsContainer");
-const requestContainer = document.querySelector("#requestContainer");
-const destinationsDropdown = document.querySelector("#destinationsDropdown");
-const requestButton = document.querySelector("#requestTrip");
-const departDate = document.querySelector("#departDate");
-
 let domUpdates = {
   greetUser(traveler) {
     const greeting = document.querySelector("#greeting");
@@ -12,6 +5,7 @@ let domUpdates = {
   },
 
   displayTripCards(trips) {
+    const tripsContainer = document.querySelector("#tripsContainer");
     tripsContainer.innerHTML = "";
     trips.forEach(trip => {
       tripsContainer.innerHTML += 
@@ -41,6 +35,10 @@ let domUpdates = {
   },
 
   displayRequestForm() {
+    const travelerContainer = document.querySelector("#travelerDetails");
+    const tripsContainer = document.querySelector("#tripsContainer");
+    const requestContainer = document.querySelector("#requestContainer");
+    const requestButton = document.querySelector("#requestTrip");
     travelerContainer.classList.toggle("hidden");
     tripsContainer.classList.toggle("hidden");
     requestContainer.classList.toggle("hidden");
@@ -53,6 +51,7 @@ let domUpdates = {
   },
 
   displayDestinationDropdown(destinationsData) {
+    const destinationsDropdown = document.querySelector("#destinationsDropdown");
     destinationsData.map(dest => {
       destinationsDropdown.innerHTML += 
       `<option value="${dest.id}">${dest.destination}</option>`
@@ -60,6 +59,7 @@ let domUpdates = {
   },
 
   setMinimumDate() {
+    const departDate = document.querySelector("#departDate");
     let today = new Date();
     let minDate = today.toISOString().substring(0, 10);
     departDate.setAttribute("min", minDate);
@@ -67,6 +67,7 @@ let domUpdates = {
 
   displayMainPage() {
     const loginPage = document.querySelector("#loginPage");
+    const requestButton = document.querySelector("#requestTrip");
     const travelerDetails = document.querySelector("#travelerDetails");
     const tripsContainer = document.querySelector("#tripsContainer");
     loginPage.classList.add("hidden");
