@@ -21,6 +21,10 @@ class Traveler {
     return costPlusFee;
   }
 
+  // getMyTrips() {
+
+  // }
+
   sortMyTrips() {
     this.trips = this.trips.sort((a, b) => dayjs(b.date) - dayjs(a.date));
   }

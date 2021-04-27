@@ -4,7 +4,7 @@ import Traveler from "../src/Traveler.js"
 import testTraveler from "./sampledata/test-traveler.js"
 import testTrips from "./sampledata/test-trips.js"
 
-let traveler;
+let traveler, sampleTrips;
 
 describe("Traveler", () => {
   beforeEach(() => {
