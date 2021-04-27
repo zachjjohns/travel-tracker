@@ -1,12 +1,14 @@
-import './css/main.scss';
-import {getTraveler, travelersData, tripsData, destinationsData} from './API';
-import Traveler from './Traveler.js';
-import domUpdates from './domUpdates';
+import "./css/main.scss";
+import {getTraveler, travelersData, tripsData, destinationsData} from "./API";
+import Traveler from "./Traveler";
+import TripsRepo from "./TripsRepo";
+import DestinationsRepo from "./DestinationsRepo";
+import domUpdates from "./domUpdates";
 
 const destinationsDropdown = document.querySelector("#destinationsDropdown");
-const requestButton = document.querySelector('#requestTrip');
-const calculateCostButton = document.querySelector('#calculateCost');
-const submitRequestButton = document.querySelector('#submitRequest');
+const requestButton = document.querySelector("#requestTrip");
+const calculateCostButton = document.querySelector("#calculateCost");
+const submitRequestButton = document.querySelector("#submitRequest");
 const departDate = document.querySelector("#departDate");
 const tripDuration = document.querySelector("#tripDuration");
 const numTravelers = document.querySelector("#numTravelers");
@@ -18,14 +20,14 @@ const loginPage = document.querySelector("#loginPage");
 const travelerDetails = document.querySelector("#travelerDetails");
 const tripsContainer = document.querySelector("#tripsContainer");
 
-window.addEventListener('load', getData(1));
-requestButton.addEventListener('click', displayRequest);
-departDate.addEventListener('change', buttonEnabler);
-tripDuration.addEventListener('change', buttonEnabler);
-numTravelers.addEventListener('change', buttonEnabler);
-calculateCostButton.addEventListener('click', calculateTripCost);
-submitRequestButton.addEventListener('click', submitTripRequest);
-loginSubmitButton.addEventListener('click', checkLogin);
+window.addEventListener("load", getData(1));
+requestButton.addEventListener("click", displayRequest);
+departDate.addEventListener("change", buttonEnabler);
+tripDuration.addEventListener("change", buttonEnabler);
+numTravelers.addEventListener("change", buttonEnabler);
+calculateCostButton.addEventListener("click", calculateTripCost);
+submitRequestButton.addEventListener("click", submitTripRequest);
+loginSubmitButton.addEventListener("click", checkLogin);
 
 let traveler, allTravelers, destinations, allTrips;
 
@@ -51,25 +53,19 @@ let dataSetter = {
   },
 
   setTrips(tripsData) {
-    allTrips = tripsData.trips;
-    traveler.trips = tripsData.trips.filter(trip => trip.userID === traveler.id);
+    allTrips = new TripsRepo(tripsData.trips);
+    allTrips.completeOldTrips();
+    traveler.getMyTrips(tripsData.trips);
     traveler.sortMyTrips();
   },
 
   setDestinations(destData) {
-    destinations = destData.destinations;
-    domUpdates.displayDestinationDropdown(destinations);
+    destinations = new DestinationsRepo(destData.destinations);
+    domUpdates.displayDestinationDropdown(destinations.allDestinations);
   },
 
   matchTripsToDestinations() {
-    traveler.trips.forEach(trip => {
-      let matchedDest = destinations.find(dest => dest.id === trip.destinationID);
-      trip.destination = matchedDest.destination;
-      trip.estimatedLodgingCostPerDay = matchedDest.estimatedLodgingCostPerDay;
-      trip.estimatedFlightCostPerPerson = matchedDest.estimatedFlightCostPerPerson;
-      trip.image = matchedDest.image;
-      trip.alt = matchedDest.alt;
-    })
+    traveler.getTripDetails(destinations.allDestinations);
     domUpdates.displayTripCards(traveler.trips);
     getAnnualSpent();
   },
@@ -96,10 +92,8 @@ function buttonEnabler() {
 
 function calculateTripCost() {
   event.preventDefault();
-  let matchedDest = destinations.find(dest => dest.id === parseInt(destinationsDropdown.value));
-  let tripCost = (numTravelers.value * matchedDest.estimatedFlightCostPerPerson
-                 + tripDuration.value * matchedDest.estimatedLodgingCostPerDay) * 1.1;
-  tripCostLine.innerText = `This trip will cost a total of $${tripCost.toFixed(2)}.`        
+  tripCostLine.innerText = 
+  `This trip will cost a total of $${destinations.getTripCost().toFixed(2)}.`;      
 }
 
 function submitTripRequest() {
@@ -109,9 +103,9 @@ function submitTripRequest() {
 
 function postTripRequest() {
   fetch("http://localhost:3001/api/v1/trips", {
-    method: 'POST',
+    method: "POST",
     body: JSON.stringify({
-      "id": parseInt(allTrips.length + 1),
+      "id": Date.now(),
       "userID": parseInt(traveler.id),
       "destinationID": parseInt(destinationsDropdown.value),
       "travelers": parseInt(numTravelers.value),
@@ -121,18 +115,19 @@ function postTripRequest() {
       "suggestedActivities": []
     }),
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json"
     }
   })
     .then(response => response.json())
+    .then(response => console.log(response))
     .then(data => traveler.trips.push(data))
     .then(alert("Trip request submitted! An agent will be in contact with you."))
     .catch(err => console.log(`POST Error: ${err.message}`))
 }
 
 function formatDate(dateValue) {
-  let splitDate = dateValue.split('-');
-  let joinedDate = splitDate.join('/');
+  let splitDate = dateValue.split("-");
+  let joinedDate = splitDate.join("/");
   return joinedDate
 }
 

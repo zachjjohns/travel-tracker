@@ -1,18 +1,18 @@
-const travelerContainer = document.querySelector('#travelerDetails')
-const tripsContainer = document.querySelector('#tripsContainer');
-const requestContainer = document.querySelector('#requestContainer');
-const destinationsDropdown = document.querySelector('#destinationsDropdown');
-const requestButton = document.querySelector('#requestTrip');
-const departDate = document.querySelector('#departDate');
+const travelerContainer = document.querySelector("#travelerDetails")
+const tripsContainer = document.querySelector("#tripsContainer");
+const requestContainer = document.querySelector("#requestContainer");
+const destinationsDropdown = document.querySelector("#destinationsDropdown");
+const requestButton = document.querySelector("#requestTrip");
+const departDate = document.querySelector("#departDate");
 
 let domUpdates = {
   greetUser(traveler) {
-    const greeting = document.querySelector('#greeting');
+    const greeting = document.querySelector("#greeting");
     greeting.innerText = `Howdy, ${traveler.name}!`;
   },
 
   displayTripCards(trips) {
-    tripsContainer.innerHTML = '';
+    tripsContainer.innerHTML = "";
     trips.forEach(trip => {
       tripsContainer.innerHTML += 
       `<section class="card" id=${trip.id}>
@@ -36,7 +36,7 @@ let domUpdates = {
   },
 
   displayAmountSpentThisYear(amountTotal) {
-    const amountSpentLine = document.querySelector('.amount-spent');
+    const amountSpentLine = document.querySelector(".amount-spent");
     amountSpentLine.innerText = `You've spent $${amountTotal} this year.`
   },
 
