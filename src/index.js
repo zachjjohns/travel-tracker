@@ -16,9 +16,8 @@ const tripCostLine = document.querySelector("#tripCost");
 const loginUser = document.querySelector("#loginUser");
 const loginPassword = document.querySelector("#loginPassword");
 const loginSubmitButton = document.querySelector("#loginSubmit");
-const loginPage = document.querySelector("#loginPage");
-const travelerDetails = document.querySelector("#travelerDetails");
-const tripsContainer = document.querySelector("#tripsContainer");
+
+
 
 window.addEventListener("load", getData(1));
 requestButton.addEventListener("click", displayRequest);
@@ -135,10 +134,11 @@ function checkLogin() {
   event.preventDefault();
   if (checkUsername() && loginPassword.value === "travel2020") {
     getData(traveler.id);
-    loginPage.classList.add("hidden");
-    requestButton.classList.remove("hidden");
-    travelerDetails.classList.remove("hidden");
-    tripsContainer.classList.remove("hidden");
+    domUpdates.displayMainPage(); 
+    // loginPage.classList.add("hidden");
+    // requestButton.classList.remove("hidden");
+    // travelerDetails.classList.remove("hidden");
+    // tripsContainer.classList.remove("hidden");
   } else {
     alert("Invalid username and/or password. Please try again.")
   }

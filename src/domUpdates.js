@@ -63,6 +63,16 @@ let domUpdates = {
     let today = new Date();
     let minDate = today.toISOString().substring(0, 10);
     departDate.setAttribute("min", minDate);
+  },
+
+  displayMainPage() {
+    const loginPage = document.querySelector("#loginPage");
+    const travelerDetails = document.querySelector("#travelerDetails");
+    const tripsContainer = document.querySelector("#tripsContainer");
+    loginPage.classList.add("hidden");
+    requestButton.classList.remove("hidden");
+    travelerDetails.classList.remove("hidden");
+    tripsContainer.classList.remove("hidden");
   }
 }
 
