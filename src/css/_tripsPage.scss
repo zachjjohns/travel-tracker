@@ -1,0 +1,118 @@
+.app-name {
+  padding-left: 1rem;
+  text-shadow: $drop-shadow;
+}
+
+.traveler-details {
+  text-align: center;
+}
+
+.trips-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  height: 25rem;
+  width: 20rem;
+  border: 2px solid $white;
+  border-radius: 1rem;
+  box-shadow: $drop-shadow;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.destination-image {
+  display: flex;
+  justify-content: flex-end;
+  height: 50%;
+  border-top-left-radius: .75rem;
+  border-top-right-radius: .75rem;
+  background-size: cover;
+}
+
+.party-container {
+  padding-top: 15px;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.party-title {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  line-height: 12px;
+  text-shadow: 2px 2px 2px black;
+}
+
+.party-count {
+  margin: 0;
+  padding: 0;
+  font-size: 36px;
+  line-height: 36px;
+  font-weight: 300;
+  text-shadow: 2px 2px 2px black;
+}
+
+.bottom-card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 50%;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.trip-name {
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  margin-bottom: 0;
+  margin-top: .7rem;
+  text-shadow: 2px 2px 7px black;
+}
+
+.trip-date {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-top: 0;
+  color: #FBEEC1;
+}
+
+.duration-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-top: .5rem;
+  margin-bottom: 0;
+}
+
+.duration-time {
+  margin-top: 0;
+  font-size: 1.3rem;
+  line-height: 1.3rem;
+  color: #DAAD86;
+}
+
+.trip-status {
+  text-transform: capitalize;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media screen and (max-width: 550px) {
+  .app-name {
+    padding: 0;
+  }
+}

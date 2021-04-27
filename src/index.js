@@ -121,7 +121,7 @@ function postTripRequest() {
     .then(response => response.json())
     .then(response => console.log(response))
     .then(data => traveler.trips.push(data))
-    .then(alert("Trip request submitted! An agent will be in contact with you."))
+    .then(tripCostLine.innerText = "Trip request submitted! An agent will be in contact with you.")
     .catch(err => console.log(`POST Error: ${err.message}`))
 }
 
