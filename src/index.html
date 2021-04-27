@@ -7,14 +7,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
   </head>
   <body>
+    <p id="errorLine" class="error-line hidden"></p>
     <h1 class="app-name">TravelTrack</h1>
     <button id="requestTrip" class="request-trip hidden">Request a Trip!</button>
     <section id="loginPage" class="login-page">
       <form class="login-form">
         <label for="uname" class="login-label"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" id="loginUser" class="login-input" required>
+        <input type="text" placeholder="Enter Username" name="uname" id="loginUser" class="login-input" aria-required="true" required>
         <label for="psw" class="login-label"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" id="loginPassword" class="login-input" required>
+        <input type="password" placeholder="Enter Password" name="psw" id="loginPassword" class="login-input" aria-required="true" required>
         <button type="submit" id="loginSubmit" class="login-button">Login</button>
       </form>
     </section>
@@ -27,13 +28,13 @@
     <section id="requestContainer" class="request-container hidden">
       <form class="request-form">
         <label for="destinations">Choose a Destination</label>
-        <select name="destinations" id="destinationsDropdown" class="request-input"></select>
+        <select name="destinations" id="destinationsDropdown" class="request-input" aria-required="true"></select>
         <label for="departDate">Departure Date:</label>
-        <input type="date" id="departDate" class="request-date" name="depart-date">
+        <input type="date" id="departDate" class="request-date" name="depart-date" aria-required="true">
         <label for="tripDuration">Trip Duration (in days)</label>
-        <input type="number" id="tripDuration" class="request-input" name="trip-duration" min="1" max="30">
+        <input type="number" id="tripDuration" class="request-input" name="trip-duration" min="1" max="30" aria-required="true">
         <label for="num-travelers">Total Travelers</label>
-        <input type="number" id="numTravelers" class="request-input" name="num-travelers" min="1" max="10">
+        <input type="number" id="numTravelers" class="request-input" name="num-travelers" min="1" max="10" aria-required="true">
         <button id="calculateCost" class="request-button" disabled>Calculate Cost</button>
         <button id="submitRequest" class="request-button" disabled>Submit Request</button>
       </form>
