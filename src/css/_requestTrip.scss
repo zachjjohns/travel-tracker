@@ -11,18 +11,33 @@
 
 .request-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .request-form {
   display: flex;
   flex-direction: column;
-  text-align: center;
+  justify-content: space-evenly;
+  height: 30rem;
   width: 20rem;
+}
+
+.request-input {
+  border-radius: .5rem;
+  padding: .5rem;
+}
+
+.request-date {
+  width: 94%;
+  border-radius: .5rem;
+  padding: .5rem;
 }
 
 .request-button {
   @include cool-button();
+  width: 100%
 }
 
 .request-button:hover {
