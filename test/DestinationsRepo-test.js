@@ -18,10 +18,10 @@ describe("Destinations Repo", () => {
     expect(destinationsRepo).to.be.an.instanceOf(DestinationsRepo);
   });
 
-  it("should instantiate with an array of all trip objects", () => {
+  it("should instantiate with an array of all destination objects", () => {
     expect(destinationsRepo.allDestinations).to.be.an("array");
-    expect(destinationsRepo.allDestinations).to.have.lengthOf(5);
-    expect(destinationsRepo.allDestinations[0].id).to.equal(18);
-    expect(destinationsRepo.allDestinations[3].id).to.equal(21);
+    expect(destinationsRepo.allDestinations).to.have.lengthOf(6);
+    expect(destinationsRepo.allDestinations[0].id).to.equal(43);
+    expect(destinationsRepo.allDestinations[3].id).to.equal(14);
   });
 })

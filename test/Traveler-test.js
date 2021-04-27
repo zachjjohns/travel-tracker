@@ -1,15 +1,17 @@
 import chai from "chai";
 const expect = chai.expect;
-import Traveler from "../src/Traveler.js"
-import testTraveler from "./sampledata/test-traveler.js"
-import testTrips from "./sampledata/test-trips.js"
+import Traveler from "../src/Traveler.js";
+import testTraveler from "./sampledata/test-traveler.js";
+import testTrips from "./sampledata/test-trips.js";
+import testDestinations from "./sampledata/test-destinations.js";
 
-let traveler, sampleTrips;
+let traveler, sampleTrips, sampleDestinations;
 
 describe("Traveler", () => {
   beforeEach(() => {
     traveler = new Traveler(testTraveler);
     sampleTrips = testTrips;
+    sampleDestinations = testDestinations;
   });
 
   it("should be a function", () => {
@@ -53,4 +55,14 @@ describe("Traveler", () => {
     expect(traveler.trips[0].date).to.equal("2021/02/10");
     expect(traveler.trips[3].date).to.equal("2020/08/24");
   });
+
+  it("should add properties to its trips based on destination", () => {
+    traveler.getMyTrips(sampleTrips);
+    traveler.getTripDetails(sampleDestinations);
+    expect(traveler.trips[0].destination).to.equal("Nassau, The Bahamas");
+    expect(traveler.trips[1].estimatedLodgingCostPerDay).to.equal(150);
+    expect(traveler.trips[2].estimatedFlightCostPerPerson).to.equal(110);
+    expect(traveler.trips[3].image).to.equal("https://images.unsplash.com/photo-1517821362941-f7f753200fef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1952&q=80");
+    expect(traveler.trips[3].alt).to.equal("people buying oranges and other fruit from a street vendor");
+  })
 });

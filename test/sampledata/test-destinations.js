@@ -1,26 +1,34 @@
 const testDestinations = [{
-  "id": 18,
-  "destination": "Cape Town, South Africa",
-  "estimatedLodgingCostPerDay": 120,
-  "estimatedFlightCostPerPerson": 1200,
-  "image": "https://images.unsplash.com/photo-1522576775862-7168ae29372c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1568&q=80",
-  "alt": "a city with mountain cliffs by the sea"
+  "id": 43,
+  "destination": "Nassau, The Bahamas",
+  "estimatedLodgingCostPerDay": 550,
+  "estimatedFlightCostPerPerson": 90,
+  "image": "https://images.unsplash.com/photo-1548574505-5e239809ee19?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1664&q=80",
+  "alt": "aerial photography of white and blue cruise ships during daytime"
 },
 {
-  "id": 19,
-  "destination": "Quito, Ecuador",
-  "estimatedLodgingCostPerDay": 60,
-  "estimatedFlightCostPerPerson": 500,
-  "image": "https://images.unsplash.com/photo-1501684691657-cf3012635478?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80",
-  "alt": "a city at night with cloudy, snowy mountains in the distance"
+  "id": 5,
+  "destination": "Madrid, Spain",
+  "estimatedLodgingCostPerDay": 150,
+  "estimatedFlightCostPerPerson": 650,
+  "image": "https://images.unsplash.com/photo-1543785734-4b6e564642f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+  "alt": "city with clear skys and a road in the day time"
 },
 {
-  "id": 20,
-  "destination": "Miami, Florida",
-  "estimatedLodgingCostPerDay": 158,
-  "estimatedFlightCostPerPerson": 275,
-  "image": "https://images.unsplash.com/photo-1514214246283-d427a95c5d2f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1573&q=80",
-  "alt": "sand with palm trees and tall buildings in the background"
+  "id": 33,
+  "destination": "Brussels, Belgium",
+  "estimatedLodgingCostPerDay": 1000,
+  "estimatedFlightCostPerPerson": 110,
+  "image": "https://images.unsplash.com/photo-1559113202-c916b8e44373?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+  "alt": "brown concrete gate"
+},
+{
+  "id": 14,
+  "destination": "Marrakesh, Morocco",
+  "estimatedLodgingCostPerDay": 70,
+  "estimatedFlightCostPerPerson": 830,
+  "image": "https://images.unsplash.com/photo-1517821362941-f7f753200fef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1952&q=80",
+  "alt": "people buying oranges and other fruit from a street vendor"
 },
 {
   "id": 21,

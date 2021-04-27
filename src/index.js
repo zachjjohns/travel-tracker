@@ -65,14 +65,7 @@ let dataSetter = {
   },
 
   matchTripsToDestinations() {
-    traveler.trips.forEach(trip => {
-      let matchedDest = destinations.allDestinations.find(dest => dest.id === trip.destinationID);
-      trip.destination = matchedDest.destination;
-      trip.estimatedLodgingCostPerDay = matchedDest.estimatedLodgingCostPerDay;
-      trip.estimatedFlightCostPerPerson = matchedDest.estimatedFlightCostPerPerson;
-      trip.image = matchedDest.image;
-      trip.alt = matchedDest.alt;
-    })
+    traveler.getTripDetails(destinations.allDestinations);
     domUpdates.displayTripCards(traveler.trips);
     getAnnualSpent();
   },
@@ -99,10 +92,8 @@ function buttonEnabler() {
 
 function calculateTripCost() {
   event.preventDefault();
-  let matchedDest = destinations.allDestinations.find(dest => dest.id === parseInt(destinationsDropdown.value));
-  let tripCost = (numTravelers.value * matchedDest.estimatedFlightCostPerPerson
-                 + tripDuration.value * matchedDest.estimatedLodgingCostPerDay) * 1.1;
-  tripCostLine.innerText = `This trip will cost a total of $${tripCost.toFixed(2)}.`        
+  tripCostLine.innerText = 
+  `This trip will cost a total of $${destinations.getTripCost().toFixed(2)}.`;      
 }
 
 function submitTripRequest() {
