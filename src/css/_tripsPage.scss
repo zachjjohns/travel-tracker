@@ -50,7 +50,7 @@
   padding: 0;
   font-size: 12px;
   line-height: 12px;
-  text-shadow: 2px 2px 2px black;
+  text-shadow: $trip-text-shadow;
 }
 
 .party-count {
@@ -59,7 +59,7 @@
   font-size: 36px;
   line-height: 36px;
   font-weight: 300;
-  text-shadow: 2px 2px 2px black;
+  text-shadow: $trip-text-shadow;
 }
 
 .bottom-card-container {
